@@ -6,17 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import bootcamp.sparta.advencedpartymission1.R
+import bootcamp.sparta.advencedpartymission1.databinding.FragmentBookmarkBinding
 
 class BookmarkFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private var _binding : FragmentBookmarkBinding? = null
+    val binding get() : FragmentBookmarkBinding = _binding!!
+
+    companion object {
+        fun getInstance() = BookmarkFragment()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        layoutInflater
-        return inflater.inflate(R.layout.fragment_bookmark, container, false)
+    ): View {
+        _binding = FragmentBookmarkBinding.inflate(inflater, container, false)
+        return binding.root
     }
 }

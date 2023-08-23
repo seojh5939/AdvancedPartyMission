@@ -7,16 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import bootcamp.sparta.advencedpartymission1.R
 import bootcamp.sparta.advencedpartymission1.databinding.FragmentTodoBinding
 
 class TodoFragment : Fragment() {
     private var _binding : FragmentTodoBinding? = null
-
     private val binding : FragmentTodoBinding get() = _binding!!
 
     private lateinit var recyclerview: RecyclerView
     private lateinit var adapter: RecyclerViewAdapter
+
+    companion object {
+        fun getInstance() = TodoFragment()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
