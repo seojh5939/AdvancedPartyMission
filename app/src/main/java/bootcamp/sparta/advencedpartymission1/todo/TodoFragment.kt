@@ -9,28 +9,29 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import bootcamp.sparta.advencedpartymission1.R
 import bootcamp.sparta.advencedpartymission1.data.TodoData
+import bootcamp.sparta.advencedpartymission1.databinding.FragmentTodoBinding
 
 class TodoFragment : Fragment() {
-    lateinit var recyclerview: RecyclerView
-    lateinit var adapter: RecyclerViewAdapter
+    private var binding : FragmentTodoBinding? = null
+    private lateinit var recyclerview: RecyclerView
+    private lateinit var adapter: RecyclerViewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_todo, container, false)
-        initRecyclerView(view)
-        return view
+    ): View {
+        binding = FragmentTodoBinding.inflate(inflater, container, false)
+        initRecyclerView()
+        return binding!!.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        // 데이터 새로고침
-        adapter.notifyDataSetChanged()
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 
-    private fun initRecyclerView(view: View) {
-        recyclerview = view.findViewById(R.id.rv_todo)
+    private fun initRecyclerView() {
+        recyclerview = binding!!.rvTodo
         adapter = RecyclerViewAdapter(TodoData.getTodoList())
         recyclerview.adapter = adapter
         recyclerview.layoutManager =

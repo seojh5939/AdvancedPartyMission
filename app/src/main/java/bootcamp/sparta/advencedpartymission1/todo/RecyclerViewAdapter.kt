@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import bootcamp.sparta.advencedpartymission1.R
 import bootcamp.sparta.advencedpartymission1.data.Todo
+import bootcamp.sparta.advencedpartymission1.databinding.FragmentItemRecyclerviewBinding
 
 class RecyclerViewAdapter(list: List<Todo>) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(){
     private val mList : List<Todo>
@@ -16,18 +17,18 @@ class RecyclerViewAdapter(list: List<Todo>) : RecyclerView.Adapter<RecyclerViewA
         mList = list
     }
 
-    class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-        val image = view.findViewById<ImageView>(R.id.iv_item_image)
-        val title = view.findViewById<TextView>(R.id.tv_item_title)
-        val content = view.findViewById<TextView>(R.id.tv_item_content)
+    class ViewHolder(private val binding: FragmentItemRecyclerviewBinding) : RecyclerView.ViewHolder(binding.root) {
+        val image = binding.ivItemImage
+        val title = binding.tvItemTitle
+        val content = binding.tvItemContent
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_item_recyclerview, parent, false)
-        val holder = ViewHolder(view)
+        val binding = FragmentItemRecyclerviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val holder = ViewHolder(binding)
         return holder
     }
 
