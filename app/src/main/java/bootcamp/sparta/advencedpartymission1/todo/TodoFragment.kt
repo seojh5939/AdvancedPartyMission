@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import bootcamp.sparta.advencedpartymission1.R
 import bootcamp.sparta.advencedpartymission1.data.TodoData
 import bootcamp.sparta.advencedpartymission1.databinding.FragmentTodoBinding
 
 class TodoFragment : Fragment() {
-    private var binding : FragmentTodoBinding? = null
+    private var _binding : FragmentTodoBinding? = null
+
+    private val binding : FragmentTodoBinding get() = _binding!!
+
     private lateinit var recyclerview: RecyclerView
     private lateinit var adapter: RecyclerViewAdapter
 
@@ -20,19 +22,19 @@ class TodoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentTodoBinding.inflate(inflater, container, false)
+        _binding = FragmentTodoBinding.inflate(inflater, container, false)
         initRecyclerView()
-        return binding!!.root
+        return binding.root
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        binding = null
+        _binding = null
     }
 
     private fun initRecyclerView() {
-        recyclerview = binding!!.rvTodo
-        adapter = RecyclerViewAdapter(TodoData.getTodoList())
+        recyclerview = binding.rvTodo
+        adapter = RecyclerViewAdapter()
         recyclerview.adapter = adapter
         recyclerview.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
