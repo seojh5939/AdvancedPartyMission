@@ -1,6 +1,5 @@
 package bootcamp.sparta.advencedpartymission1.todo
 
-import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.MenuItem
@@ -8,7 +7,6 @@ import android.widget.Button
 import android.widget.EditText
 import bootcamp.sparta.advencedpartymission1.R
 import bootcamp.sparta.advencedpartymission1.abstract.BaseActivity
-import bootcamp.sparta.advencedpartymission1.data.Todo
 import bootcamp.sparta.advencedpartymission1.data.TodoData
 import bootcamp.sparta.advencedpartymission1.main.MainActivity
 import kotlin.random.Random
@@ -45,7 +43,7 @@ class WriteTodoActivity : BaseActivity() {
                 toastMsg("제목 혹은 내용을 입력해주셔야 합니다.")
             } else {
                 TodoData.setTodoList(
-                    Todo(
+                    TodoModel(
                         title = et_title.text.toString(),
                         contents = et_content.text.toString(),
                         image = getRandomImage(),

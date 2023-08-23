@@ -1,21 +1,12 @@
 package bootcamp.sparta.advencedpartymission1.todo
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import bootcamp.sparta.advencedpartymission1.R
-import bootcamp.sparta.advencedpartymission1.data.Todo
 import bootcamp.sparta.advencedpartymission1.databinding.FragmentItemRecyclerviewBinding
 
-class RecyclerViewAdapter(list: List<Todo>) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(){
-    private val mList : List<Todo>
-
-    init {
-        mList = list
-    }
+class RecyclerViewAdapter() : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(){
+    private val mList : MutableList<TodoModel> = mutableListOf()
 
     class ViewHolder(private val binding: FragmentItemRecyclerviewBinding) : RecyclerView.ViewHolder(binding.root) {
         val image = binding.ivItemImage
