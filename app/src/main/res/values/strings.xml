@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">AdvancedPartyMission!</string>
+
+    <string name="character_ddolgi_name">똘기</string>
+    <string name="character_ddunge_name">떵이</string>
+    <string name="character_hochi_name">호치</string>
+    <string name="character_saechomi_name">새초미</string>
+    <string name="character_drago_name">드라고</string>
+    <string name="character_yoreungi">요롱이</string>
+    <string name="character_macho_name">마초</string>
+    <string name="character_mimi_name">미미</string>
+    <string name="character_mungchi_name">뭉치</string>
+    <string name="character_kiki_name">키키</string>
+    <string name="character_gangdari_name">강다리</string>
+    <string name="character_zhingzhing_name">찡찡</string>
+
+    <string name="character_ddolgi_description">12지 중 제일 첫번째 띠인 쥐띠이기 때문에 본작에서도 대장을 맡고 있다. 그래서인지 유일하게 2개의 무기를 보유하며, 두 개의 에피소드를 제외하면[6] 매번 출격 엔트리에 개근한다. 게다가 개인 에피소드까지 존재한다.</string>
+    <string name="character_ddunge_description">마음씨가 착하며 친구들에게 매우 친절하고 온화한 성격이다. 또한 마초 못지 않은 긍정적인 성격인 듯. 극 중에는 나는 항상 행복하다. 고 직접 언급하기도 했다.</string>
+    <string name="character_hochi_description">작품의 전체적인 주인공이 똘기라면 숨겨진 또 한 명의 주인공은 호치다. 근육질의 건장한 체격을 지닌 장신. 특히 팔근육이 상당해서 작중에서 가냘픈 체구인 애인 쿠키가 거의 매달릴 정도. 카리스마가 있는 인상.</string>
+    <string name="character_saechomi_description">외모도 순위권이고 소위 말하는 츤데레 끼도 있다. 다만 전투 능력은 제로. 대신 토끼의 능력인 고도의 청각을 이용하여 동료의 위기를 감지하거나 하는 부분은 상당하다.</string>
+    <string name="character_drago_description">변신 대사가 이 얼 싼(一 二 三)인 것이나 캐릭터 송의 분위기 등 전체적으로 중국풍이 강한 느낌의 캐릭터이다. </string>
+    <string name="character_yoreungi_description">팀 내 브레인 역할. 항상 책을 들고 있으며 여러가지 지식을 뽐내지만 정작 그의 머리에 나오는 지능이 제대로 먹혀들어가는 경우가 별로 없는 편이다. </string>
+    <string name="character_macho_description">마이페이스가 강하면서도 매사에 밝고 긍정적인 성격. 똘기와 비슷하게 근성가이에다가 열혈바보인데, 그보다 더 왈가닥 기질이 강하다.</string>
+    <string name="character_mimi_description">양. 근데 귀를 빼면 영락없는 인간. 인간 형태의 키키 다음으로 가장 인간과 흡사한 외양을 가지고 있다.</string>
+    <string name="character_mungchi_description">장난을 좋아하는 기운넘치는 원숭이. 원숭이인 만큼 나무 타기가 특기고 바나나를 좋아한다. </string>
+    <string name="character_kiki_description">초반에는 그냥 그저 그런 닭 수인의 모습을 한 정령이었으나 5번째(KBS판에선 4번째) 에피소드인 미운 오리 새끼 에피소드에서 타조가 되어버린 새끼 백조가 수영을 하려다 물에 빠지자 무작정 구하러 뛰어들었다가 같이 익사(...)하기 직전 병아리 초초(전사 히요코)의 알버전의 버튼을 눌러 기사회생, 사람 모습으로 변신해서 위기를 탈출하는데... 이 모습이 꽤나 성숙하고 예쁜 외모라서 이후 인기폭발.</string>
+    <string name="character_gangdari_description">멤버들과는 원만하나 견원지간이라는 말처럼 몽치와는 관계가 좋지 못해 툭하면 맨날 티격태격하는 게 일상.</string>
+    <string name="character_zhingzhing_description">성격으로 보나 대원 내 포지션으로 보나 가장 어린애지만 예외로 카구야 공주 편에서는 떵이, 호치와 함께 아기가 된 카구야 공주를 보살피기도 하는 성숙한 모습을 보여줬다.</string>
+</resources>
