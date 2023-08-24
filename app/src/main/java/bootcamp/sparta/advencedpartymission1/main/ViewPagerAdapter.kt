@@ -8,13 +8,29 @@ import bootcamp.sparta.advencedpartymission1.bookmark.BookmarkFragment
 import bootcamp.sparta.advencedpartymission1.todo.TodoFragment
 
 class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle){
-    private val fragmentList = listOf<Fragment>(TodoFragment(), BookmarkFragment())
+    private val fragmentsList = ArrayList<MainTabs>()
+
+    fun getTodoFragment() : TodoFragment = fragmentsList[fragments.Todo.num].fragment as TodoFragment
+    fun getBookmarkFragment() : BookmarkFragment = fragmentsList[fragments.Bookmark.num].fragment as BookmarkFragment
+
+    fun addTabs(tabs: MainTabs) {
+        fragmentsList.add(tabs)
+    }
+
+    fun getTitleRes(position: Int) : Int {
+        return fragmentsList[position].tabTitleRes
+    }
 
     override fun getItemCount(): Int {
-        return fragmentList.size
+        return fragmentsList.size
     }
 
     override fun createFragment(position: Int): Fragment {
-        return fragmentList[position]
+        return fragmentsList[position].fragment
     }
+}
+
+enum class fragments(val num: Int) {
+    Todo(0),
+    Bookmark(1),
 }

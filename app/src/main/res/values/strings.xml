@@ -26,4 +26,8 @@
     <string name="character_kiki_description">초반에는 그냥 그저 그런 닭 수인의 모습을 한 정령이었으나 5번째(KBS판에선 4번째) 에피소드인 미운 오리 새끼 에피소드에서 타조가 되어버린 새끼 백조가 수영을 하려다 물에 빠지자 무작정 구하러 뛰어들었다가 같이 익사(...)하기 직전 병아리 초초(전사 히요코)의 알버전의 버튼을 눌러 기사회생, 사람 모습으로 변신해서 위기를 탈출하는데... 이 모습이 꽤나 성숙하고 예쁜 외모라서 이후 인기폭발.</string>
     <string name="character_gangdari_description">멤버들과는 원만하나 견원지간이라는 말처럼 몽치와는 관계가 좋지 못해 툭하면 맨날 티격태격하는 게 일상.</string>
     <string name="character_zhingzhing_description">성격으로 보나 대원 내 포지션으로 보나 가장 어린애지만 예외로 카구야 공주 편에서는 떵이, 호치와 함께 아기가 된 카구야 공주를 보살피기도 하는 성숙한 모습을 보여줬다.</string>
+
+    <string name="fragment_todo_tab_title">Todo</string>
+    <string name="fragment_bookmark_tab_title">Bookmark</string>
+    <string name="intent_todoModel">intent_todo</string>
 </resources>

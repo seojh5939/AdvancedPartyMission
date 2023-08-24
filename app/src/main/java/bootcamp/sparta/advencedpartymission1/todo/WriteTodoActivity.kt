@@ -1,24 +1,28 @@
 package bootcamp.sparta.advencedpartymission1.todo
 
-import android.graphics.drawable.Drawable
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.EditText
 import bootcamp.sparta.advencedpartymission1.R
 import bootcamp.sparta.advencedpartymission1.abstract.BaseActivity
-import bootcamp.sparta.advencedpartymission1.data.TodoData
+import bootcamp.sparta.advencedpartymission1.databinding.ActivityWriteTodoBinding
 import bootcamp.sparta.advencedpartymission1.main.MainActivity
 import kotlin.random.Random
 
 class WriteTodoActivity : BaseActivity() {
-    private val btn_add: Button by lazy { findViewById(R.id.btn_add_write) }
-    private val et_title : EditText by lazy { findViewById(R.id.et_title_write) }
-    private val et_content : EditText by lazy { findViewById(R.id.et_content_write) }
+    private lateinit var binding: ActivityWriteTodoBinding
+
+    companion object {
+        fun newIntent(context: Context) : Intent {
+            return Intent(context, WriteTodoActivity::class.java)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_write_todo)
+        binding = ActivityWriteTodoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setToolBarTitle(findViewById(R.id.layout_toolbar_write), "할일", true)
         addButtonListener()
@@ -27,7 +31,7 @@ class WriteTodoActivity : BaseActivity() {
 
     // 툴바 뒤로가기버튼 눌렀을때 동작
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             android.R.id.home -> {
                 finish()
                 return true
@@ -38,42 +42,46 @@ class WriteTodoActivity : BaseActivity() {
 
     // 내용추가버튼
     private fun addButtonListener() {
-        btn_add.setOnClickListener {
-            if(isEditTextEmpty()) {
+        binding.btnAddWrite.setOnClickListener {
+            if (isEditTextEmpty()) {
                 toastMsg("제목 혹은 내용을 입력해주셔야 합니다.")
             } else {
-                TodoData.setTodoList(
-                    TodoModel(
-                        title = et_title.text.toString(),
-                        contents = et_content.text.toString(),
-                        image = getRandomImage(),
+                val intent = MainActivity.newIntent(this).apply {
+                    putExtra(
+                        getString(R.string.intent_todoModel),
+                        TodoModel(
+                            title = binding.etTitleWrite.text.toString(),
+                            image = getRandomImage(),
+                            contents = binding.etContentWrite.text.toString(),
+                        )
                     )
-                )
-                intentChangeActivity(MainActivity::class.java)
+                }
+                intent.putExtra("mybundle", TodoModel::class.java)
+                setResult(RESULT_OK, intent)
                 finish()
             }
         }
     }
 
     // EditText Empty 체크
-    private fun isEditTextEmpty() : Boolean = et_title.text.isEmpty() || et_content.text.isEmpty()
+    private fun isEditTextEmpty(): Boolean = binding.etTitleWrite.text.isEmpty() || binding.etContentWrite.text.isEmpty()
 
-    private fun getRandomImage() : Drawable? {
+    private fun getRandomImage(): Int {
         val charList = listOf(
-            getDrawable(R.drawable.character_ddolgi),
-            getDrawable(R.drawable.character_ddunge),
-            getDrawable(R.drawable.character_hochi),
-            getDrawable(R.drawable.character_saechomi),
-            getDrawable(R.drawable.character_drago),
-            getDrawable(R.drawable.character_yoreungi),
-            getDrawable(R.drawable.character_macho),
-            getDrawable(R.drawable.character_mimi),
-            getDrawable(R.drawable.character_mungchi),
-            getDrawable(R.drawable.character_kiki),
-            getDrawable(R.drawable.character_gangdari),
-            getDrawable(R.drawable.character_zhingzhing),
+            R.drawable.character_ddolgi,
+            R.drawable.character_ddunge,
+            R.drawable.character_hochi,
+            R.drawable.character_saechomi,
+            R.drawable.character_drago,
+            R.drawable.character_yoreungi,
+            R.drawable.character_macho,
+            R.drawable.character_mimi,
+            R.drawable.character_mungchi,
+            R.drawable.character_kiki,
+            R.drawable.character_gangdari,
+            R.drawable.character_zhingzhing,
         )
-        val randNum = Random.nextInt(0,12)
+        val randNum = Random.nextInt(0, 12)
         return charList[randNum]
     }
 }

@@ -11,10 +11,11 @@ import bootcamp.sparta.advencedpartymission1.databinding.FragmentTodoBinding
 
 class TodoFragment : Fragment() {
     private var _binding : FragmentTodoBinding? = null
-    private val binding : FragmentTodoBinding get() = _binding!!
+    val binding : FragmentTodoBinding get() = _binding!!
 
     private lateinit var recyclerview: RecyclerView
-    private lateinit var adapter: RecyclerViewAdapter
+    lateinit var adapter: RecyclerViewAdapter
+    private var todoLists : MutableList<TodoModel> = mutableListOf()
 
     companion object {
         fun getInstance() = TodoFragment()
@@ -36,9 +37,15 @@ class TodoFragment : Fragment() {
 
     private fun initRecyclerView() {
         recyclerview = binding.rvTodo
-        adapter = RecyclerViewAdapter()
+        adapter = RecyclerViewAdapter(todoLists)
         recyclerview.adapter = adapter
         recyclerview.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
+
+    fun setTodoLists(data: TodoModel) {
+        todoLists.add(data)
+    }
+
+    fun getTodoDataPosition() : Int = todoLists.size
 }

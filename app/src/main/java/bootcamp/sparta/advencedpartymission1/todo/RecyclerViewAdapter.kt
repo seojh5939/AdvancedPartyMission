@@ -5,10 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import bootcamp.sparta.advencedpartymission1.databinding.FragmentItemRecyclerviewBinding
 
-class RecyclerViewAdapter() : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
-    private val _mTodoLists: MutableList<TodoModel> = mutableListOf()
+class RecyclerViewAdapter(private val mTodoLists : MutableList<TodoModel>) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
-    val todoList: MutableList<TodoModel> get() = _mTodoLists
+    val todoList: MutableList<TodoModel> get() = mTodoLists
 
     class ViewHolder(private val binding: FragmentItemRecyclerviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -31,12 +30,12 @@ class RecyclerViewAdapter() : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolde
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.title.text = _mTodoLists[position].title
-        _mTodoLists[position].image?.let { holder.image.setImageDrawable(it) }
-        holder.content.text = _mTodoLists[position].contents
+        holder.title.text = mTodoLists[position].title
+        mTodoLists[position].image.let { holder.image.setImageResource(it) }
+        holder.content.text = mTodoLists[position].contents
     }
 
     override fun getItemCount(): Int {
-        return _mTodoLists.size
+        return mTodoLists.size
     }
 }
