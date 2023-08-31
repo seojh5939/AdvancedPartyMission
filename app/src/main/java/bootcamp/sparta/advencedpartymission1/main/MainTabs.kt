@@ -4,5 +4,5 @@ import androidx.fragment.app.Fragment
 
 data class MainTabs(
     val fragment: Fragment,
-    val tabTitleRes : Int,
+    val titleRes : Int,
 )

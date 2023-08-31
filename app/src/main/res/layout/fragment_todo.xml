@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".todo.TodoFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_todo"
+        android:id="@+id/todo_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/fragment_item_recyclerview"
-        />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_height="match_parent" />
 
 </FrameLayout>

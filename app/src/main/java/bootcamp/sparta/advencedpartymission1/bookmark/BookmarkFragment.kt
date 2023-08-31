@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import bootcamp.sparta.advencedpartymission1.R
 import bootcamp.sparta.advencedpartymission1.databinding.FragmentBookmarkBinding
 
 class BookmarkFragment : Fragment() {
@@ -13,7 +12,7 @@ class BookmarkFragment : Fragment() {
     val binding get() : FragmentBookmarkBinding = _binding!!
 
     companion object {
-        fun getInstance() = BookmarkFragment()
+        fun newInstance() = BookmarkFragment()
     }
 
     override fun onCreateView(
