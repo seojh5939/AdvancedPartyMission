@@ -40,7 +40,7 @@
         android:autofillHints="" />
 
     <Button
-        android:id="@+id/btn_todo_content_positive"
+        android:id="@+id/btn_todo_content_save"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="등록"
@@ -48,4 +48,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/btn_todo_content_remove"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="삭제"
+        android:visibility="invisible"
+        android:layout_margin="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_todo_content_save"
+         />
 </androidx.constraintlayout.widget.ConstraintLayout>

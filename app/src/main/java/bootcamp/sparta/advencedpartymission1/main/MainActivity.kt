@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private val viewPagerAdapter by lazy {
         MainViewPagerAdapter(this@MainActivity)
     }
+
     private val addTodoLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if(result.resultCode == RESULT_OK) {
             val todoModel = if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -33,7 +34,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    init {
+        instance = this
+    }
+
     companion object {
+        private var instance : MainActivity? = null
+
+        fun getInstance() = instance
         fun newIntent(context: Context): Intent {
             return Intent(context, MainActivity::class.java)
         }
@@ -66,10 +74,18 @@ class MainActivity : AppCompatActivity() {
 
         mainFab.setOnClickListener {
             addTodoLauncher.launch(
-                TodoContentActivity.newIntent(this@MainActivity)
+                TodoContentActivity.newIntentForAdd(this@MainActivity)
             )
         }
     }
 
+    fun modifyTodoItem(origin: TodoModel, modify: TodoModel) {
+        viewPagerAdapter.getTodoFragment()?.modifyTodoItem(origin, modify)
+    }
 
+    fun removeTodoItem(item: TodoModel) {
+        viewPagerAdapter.getTodoFragment()?.apply {
+            removeTodoContent(item)
+        }
+    }
 }
