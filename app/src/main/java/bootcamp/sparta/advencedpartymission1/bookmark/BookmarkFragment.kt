@@ -10,7 +10,7 @@ import bootcamp.sparta.advencedpartymission1.databinding.FragmentBookmarkBinding
 
 class BookmarkFragment : Fragment() {
     private var _binding : FragmentBookmarkBinding? = null
-    val binding get() : FragmentBookmarkBinding = _binding!!
+    private val binding get() : FragmentBookmarkBinding = _binding!!
 
     companion object {
         fun getInstance() = BookmarkFragment()
