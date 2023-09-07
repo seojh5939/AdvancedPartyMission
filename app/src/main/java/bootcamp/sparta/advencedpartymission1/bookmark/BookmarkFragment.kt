@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import bootcamp.sparta.advencedpartymission1.R
-import bootcamp.sparta.advencedpartymission1.databinding.FragmentBookmarkBinding
+import bootcamp.sparta.advencedpartymission1.databinding.BookmarkFragmentBinding
 
 class BookmarkFragment : Fragment() {
-    private var _binding : FragmentBookmarkBinding? = null
-    private val binding get() : FragmentBookmarkBinding = _binding!!
+    private var _binding : BookmarkFragmentBinding? = null
+    private val binding get() : BookmarkFragmentBinding = _binding!!
 
     companion object {
         fun getInstance() = BookmarkFragment()
@@ -20,7 +20,7 @@ class BookmarkFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentBookmarkBinding.inflate(inflater, container, false)
+        _binding = BookmarkFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 }
