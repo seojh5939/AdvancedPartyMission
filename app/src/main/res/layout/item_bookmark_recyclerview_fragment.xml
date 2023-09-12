@@ -2,13 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bookmark_container"
     android:background="?attr/selectableItemBackground"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="15dp">
 
     <TextView
-        android:id="@+id/item_title"
+        android:id="@+id/item_bookmark_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -20,16 +21,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/item_content"
+        android:id="@+id/item_bookmark_content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         tools:text="내용"
         android:layout_margin="5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_title"
+        app:layout_constraintTop_toBottomOf="@+id/item_bookmark_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/item_bookmark_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/item_bookmark_title"
+        app:layout_constraintBottom_toBottomOf="@+id/item_bookmark_content" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

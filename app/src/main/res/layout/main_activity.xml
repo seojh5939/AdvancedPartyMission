@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tl_main"
+        android:id="@+id/main_tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,16 +25,16 @@
         app:layout_constraintTop_toBottomOf="@+id/main_toolbar" />
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp_main"
+        android:id="@+id/main_viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tl_main" />
+        app:layout_constraintTop_toBottomOf="@+id/main_tabLayout" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_main"
+        android:id="@+id/main_addTodo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"

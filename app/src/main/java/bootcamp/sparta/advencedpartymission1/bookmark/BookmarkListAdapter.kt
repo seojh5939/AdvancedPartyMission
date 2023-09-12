@@ -2,30 +2,56 @@ package bootcamp.sparta.advencedpartymission1.bookmark
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import bootcamp.sparta.advencedpartymission1.databinding.ItemRecyclerviewFragmentBinding
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import bootcamp.sparta.advencedpartymission1.databinding.ItemBookmarkRecyclerviewFragmentBinding
 
-class BookmarkListAdapter(private val list: ArrayList<BookmarkModel>) : RecyclerView.Adapter<BookmarkListAdapter.Holder>(){
-    private val mList = list
+class BookmarkListAdapter() :
+    ListAdapter<BookmarkModel, BookmarkViewHolder>(diffUtil) {
 
-    class Holder(private val binding: ItemRecyclerviewFragmentBinding) : RecyclerView.ViewHolder(binding.root) {
+    companion object {
+        val diffUtil = object : DiffUtil.ItemCallback<BookmarkModel>() {
+            override fun areItemsTheSame(oldItem: BookmarkModel, newItem: BookmarkModel): Boolean {
+                return oldItem.id == newItem.id
+            }
 
-        fun bind(item: BookmarkModel)= with(binding) {
+            override fun areContentsTheSame(
+                oldItem: BookmarkModel,
+                newItem: BookmarkModel
+            ): Boolean {
+                return oldItem == newItem
+            }
 
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarkListAdapter.Holder {
-        val view = ItemRecyclerviewFragmentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return Holder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarkViewHolder {
+        return BookmarkViewHolder(
+            ItemBookmarkRecyclerviewFragmentBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    override fun onBindViewHolder(holder: BookmarkListAdapter.Holder, position: Int) {
-        val item = mList[position]
+    override fun onBindViewHolder(holder: BookmarkViewHolder, position: Int) {
+        val item = getItem(position)
         holder.bind(item)
     }
 
-    override fun getItemCount(): Int {
-        return mList.size
+    fun addItem(item: BookmarkModel) {
+        val list = currentList.toMutableList()
+        list.add(item)
+        submitList(list)
+    }
+
+    fun deleteItem(item: BookmarkModel) {
+        val list = currentList.toMutableList()
+        list.find { it.id == item.id }?.let {
+            val position = list.indexOf(it)
+            list.removeAt(position)
+            submitList(list)
+        }
     }
 }

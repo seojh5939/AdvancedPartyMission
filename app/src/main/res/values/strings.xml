@@ -7,5 +7,7 @@
     <string name="write_title_hint">제목</string>
     <string name="write_content_hint">내용</string>
     <string name="write_submit_text">등록</string>
+    <string name="write_delete_text">삭제</string>
     <string name="write_toolbar_text">등록</string>
+    <string name="edit_text_empty_toast_msg">값이 비어있습니다.</string>
 </resources>
