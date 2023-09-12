@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import bootcamp.sparta.advencedpartymission1.R
 import bootcamp.sparta.advencedpartymission1.databinding.WriteTodoActivityBinding
@@ -68,14 +69,14 @@ class TodoContentActivity : AppCompatActivity() {
 
     private fun initView() = with(binding) {
         writeSubmit.setText(
-            when(entryType) {
+            when (entryType) {
                 TodoContentType.EDIT -> "수정"
                 else -> "등록"
             }
         )
 
         // 삭제버튼 Visibility
-        when(entryType) {
+        when (entryType) {
             TodoContentType.EDIT -> writeDelete.visibility = View.VISIBLE
             else -> writeDelete.visibility = View.INVISIBLE
         }
@@ -107,12 +108,34 @@ class TodoContentActivity : AppCompatActivity() {
                     EXTRA_TODO_MODEL,
                     TodoModel(
                         title = writeTitleEt.text.toString(),
-                        content = writeContentEt.text.toString()
+                        content = writeContentEt.text.toString(),
+                        bookmark = false,
                     )
                 )
             }
             setResult(RESULT_OK, intent)
             finish()
+        }
+
+        writeDelete.setOnClickListener {
+            AlertDialog.Builder(this@TodoContentActivity).apply {
+                setMessage(getString(R.string.todo_delete_dialog_message))
+                setPositiveButton(
+                    getString(R.string.todo_delete_dialog_positive),
+                ) { _, _ ->
+                    val intent = Intent().apply {
+                        putExtra(EXTRA_TODO_ENTRY_TYPE, TodoContentType.REMOVE.name)
+                        putExtra(EXTRA_TODO_POSITION, position)
+                    }
+                    setResult(RESULT_OK, intent)
+                    finish()
+                }
+                setNegativeButton(getString(R.string.todo_delete_dialog_negative)) { _, _ ->
+
+                }
+            }
+                .create()
+                .show()
         }
     }
 

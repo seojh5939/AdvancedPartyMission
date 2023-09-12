@@ -5,14 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import bootcamp.sparta.advencedpartymission1.R
 import bootcamp.sparta.advencedpartymission1.databinding.BookmarkFragmentBinding
+import bootcamp.sparta.advencedpartymission1.todo.TodoViewModel
 
 class BookmarkFragment : Fragment() {
     private var _binding : BookmarkFragmentBinding? = null
     private val binding get() : BookmarkFragmentBinding = _binding!!
+
     private val bookmarkListAdapter by lazy {
-        BookmarkListAdapter()
+        BookmarkListAdapter(requireActivity())
+    }
+
+    private val bookmarkViewModel: BookmarkViewModel by lazy {
+        ViewModelProvider(requireActivity())[BookmarkViewModel::class.java]
     }
 
     companion object {
@@ -24,6 +32,7 @@ class BookmarkFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = BookmarkFragmentBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -34,14 +43,9 @@ class BookmarkFragment : Fragment() {
     }
 
     private fun initView()=with(binding) {
-        bookmarkRecyclerView.adapter = bookmarkListAdapter
-    }
-
-    fun addBookmarkItem(item: BookmarkModel) {
-        bookmarkListAdapter.addItem(item)
-    }
-
-    fun removeBookmarkItem(item: BookmarkModel) {
-        bookmarkListAdapter.deleteItem(item)
+        bookmarkViewModel.liveData.observe(viewLifecycleOwner) { list ->
+            bookmarkListAdapter.submitList(list)
+            bookmarkRecyclerView.adapter = bookmarkListAdapter
+        }
     }
 }

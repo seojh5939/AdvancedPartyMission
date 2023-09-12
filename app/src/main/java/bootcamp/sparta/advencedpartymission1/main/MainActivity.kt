@@ -6,12 +6,14 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import bootcamp.sparta.advencedpartymission1.bookmark.BookmarkFragment
 import bootcamp.sparta.advencedpartymission1.bookmark.BookmarkModel
 import bootcamp.sparta.advencedpartymission1.databinding.MainActivityBinding
 import bootcamp.sparta.advencedpartymission1.todo.TodoFragment
 import bootcamp.sparta.advencedpartymission1.todo.TodoModel
+import bootcamp.sparta.advencedpartymission1.todo.TodoViewModel
 import bootcamp.sparta.advencedpartymission1.todo.content.TodoContentActivity
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -22,6 +24,9 @@ class MainActivity : AppCompatActivity() {
     private val viewPagerAdapter : ViewPagerAdapter by lazy {
         ViewPagerAdapter(this@MainActivity)
     }
+    private val todoViewModel by lazy {
+        ViewModelProvider(this)[TodoViewModel::class.java]
+    }
 
     private val addTodoLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if(result.resultCode == RESULT_OK) {
@@ -30,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 result.data?.getParcelableExtra(TodoContentActivity.EXTRA_TODO_MODEL)
             }
-            modelItem?.let{ viewPagerAdapter.getTodoFragment().setTodoItem(it) }
+            modelItem?.let{ todoViewModel.addTodoItem(it) }
         }
     }
 
@@ -76,7 +81,4 @@ class MainActivity : AppCompatActivity() {
             addTodoLauncher.launch(TodoContentActivity.newIntentForAdd(this@MainActivity))
         }
     }
-
-    fun getTodoFragment() : TodoFragment = viewPagerAdapter.getTodoFragment()
-    fun getBookmarkFragment(): BookmarkFragment = viewPagerAdapter.getBookmarkFragment()
 }
