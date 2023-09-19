@@ -77,9 +77,9 @@ class TodoFragment : Fragment() {
     }
 
     private fun initView() = with(binding) {
+        todoRecyclerView.adapter = recyclerAdapter
         todoViewModel.liveData.observe(requireActivity()) {
                 list -> recyclerAdapter.submitList(list)
-            todoRecyclerView.adapter = recyclerAdapter
         }
     }
 

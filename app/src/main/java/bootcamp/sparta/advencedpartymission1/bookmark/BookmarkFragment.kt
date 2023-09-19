@@ -43,9 +43,9 @@ class BookmarkFragment : Fragment() {
     }
 
     private fun initView()=with(binding) {
+        bookmarkRecyclerView.adapter = bookmarkListAdapter
         bookmarkViewModel.liveData.observe(viewLifecycleOwner) { list ->
             bookmarkListAdapter.submitList(list)
-            bookmarkRecyclerView.adapter = bookmarkListAdapter
         }
     }
 }
